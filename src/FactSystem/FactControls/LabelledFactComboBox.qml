@@ -35,11 +35,6 @@ RowLayout {
         id:                     _comboBox
         Layout.preferredWidth:  comboBoxPreferredWidth
         sizeToContents:         true
-
-        // view: TableView {  // 设置带有滚动条的视图
-        //     verticalScrollBarPolicy: Qt.ScrollBarAsNeeded
-        //     model: _comboBox.model
-        // }
         
         onActivated: (index) => { parent.activated(index) }
     }
