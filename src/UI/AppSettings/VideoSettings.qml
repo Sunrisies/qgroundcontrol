@@ -37,22 +37,21 @@ SettingsPage {
 
     SettingsGroupLayout {
         Layout.fillWidth:   true
-        heading:            qsTr("Video Source")
-        headingDescription: _videoAutoStreamConfig ? qsTr("Mavlink camera stream is automatically configured") : ""
+        heading:            qsTr("视频源")
+        headingDescription: _videoAutoStreamConfig ? qsTr("Mavlink摄像头流自动配置") : ""
         enabled:            !_videoAutoStreamConfig
 
         LabelledFactComboBox {
             Layout.fillWidth:   true
-            label:              qsTr("Source")
+            label:              qsTr("源")
             indexModel:         false
             fact:               _videoSettings.videoSource
-            visible:            fact.visible
         }
     }
 
     SettingsGroupLayout {
         Layout.fillWidth:   true
-        heading:            qsTr("Connection")
+        heading:            qsTr("连接")
         visible:            !_videoSourceDisabled && !_videoAutoStreamConfig && (_isTCP || _isRTSP | _requiresUDPUrl)
 
         LabelledFactTextField {
@@ -82,33 +81,33 @@ SettingsPage {
 
     SettingsGroupLayout {
         Layout.fillWidth:   true
-        heading:            qsTr("Settings")
+        heading:            qsTr("设置")
         visible:            !_videoSourceDisabled
 
         LabelledFactTextField {
             Layout.fillWidth:   true
-            label:              qsTr("Aspect Ratio")
+            label:              qsTr("纵横比")
             fact:               _videoSettings.aspectRatio
             visible:            !_videoAutoStreamConfig && _isStreamSource && _videoSettings.aspectRatio.visible
         }
 
         FactCheckBoxSlider {
             Layout.fillWidth:   true
-            text:               qsTr("Stop recording when disarmed")
+            text:               qsTr("解除武装后停止录制")
             fact:               _videoSettings.disableWhenDisarmed
             visible:            !_videoAutoStreamConfig && _isStreamSource && fact.visible
         }
 
         FactCheckBoxSlider {
             Layout.fillWidth:   true
-            text:               qsTr("Low Latency Mode")
+            text:               qsTr("低延迟模式")
             fact:               _videoSettings.lowLatencyMode
             visible:            !_videoAutoStreamConfig && _isStreamSource && fact.visible && _isGST
         }
 
         LabelledFactComboBox {
             Layout.fillWidth:   true
-            label:              qsTr("Video decode priority")
+            label:              qsTr("视频解码优先级")
             fact:               _videoSettings.forceVideoDecoder
             visible:            fact.visible
             indexModel:         false
@@ -117,25 +116,25 @@ SettingsPage {
 
     SettingsGroupLayout {
         Layout.fillWidth: true
-        heading:            qsTr("Local Video Storage")
+        heading:            qsTr("本地视频存储")
 
         LabelledFactComboBox {
             Layout.fillWidth:   true
-            label:              qsTr("Record File Format")
+            label:              qsTr("记录文件格式")
             fact:               _videoSettings.recordingFormat
             visible:            _videoSettings.recordingFormat.visible
         }
 
         FactCheckBoxSlider {
             Layout.fillWidth:   true
-            text:               qsTr("Auto-Delete Saved Recordings")
+            text:               qsTr("自动删除已保存的录制")
             fact:               _videoSettings.enableStorageLimit
             visible:            fact.visible
         }
 
         LabelledFactTextField {
             Layout.fillWidth:   true
-            label:              qsTr("Max Storage Usage")
+            label:              qsTr("最大存储使用率")
             fact:               _videoSettings.maxVideoSize
             visible:            fact.visible
             enabled:            _videoSettings.enableStorageLimit.rawValue

@@ -40,10 +40,10 @@ ToolIndicatorPage {
 
     contentComponent: Component {
         SettingsGroupLayout { 
-            heading: qsTr("Select Link to Connect")
+            heading: qsTr("选择要连接的链接")
 
             QGCLabel {
-                text:       qsTr("No Links Configured")
+                text:       qsTr("未配置链接")
                 visible:    noLinks
             }
         
@@ -52,7 +52,7 @@ ToolIndicatorPage {
 
                 delegate: QGCButton {
                     Layout.fillWidth:   true
-                    text:               object.name + (object.link ? " (" + qsTr("Connected") + ")" : "")
+                    text:               object.name + (object.link ? " (" + qsTr("有关的") + ")" : "")
                     visible:            !object.dynamic
                     enabled:            !object.link
                     autoExclusive:      true
@@ -72,18 +72,18 @@ ToolIndicatorPage {
 
             SettingsGroupLayout {
                 LabelledButton {
-                    label:      qsTr("Communication Links")
-                    buttonText: qsTr("Configure")
+                    label:      qsTr("通信链路")
+                    buttonText: qsTr("配置")
 
                     onClicked: {
-                        mainWindow.showSettingsTool(qsTr("Comm Links"))
+                        mainWindow.showSettingsTool(qsTr("通信链接"))
                         mainWindow.closeIndicatorDrawer()
                     }
                 }
             }
 
             SettingsGroupLayout {
-                heading:        qsTr("AutoConnect")
+                heading:        qsTr("自动连接")
                 visible:        autoConnectSettings.visible
 
                 Repeater {
