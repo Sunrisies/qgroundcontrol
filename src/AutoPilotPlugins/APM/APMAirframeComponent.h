@@ -23,7 +23,7 @@ public:
     QStringList setupCompleteChangedTriggerList() const final;
 
     QString name() const final { return _name; }
-    QString description() const final { return tr("Frame Setup is used to select the airframe which matches your vehicle."); }
+    QString description() const final { return tr("用机架设置来选择适合你目前机架的配置."); }
     QString iconResource() const final { return QStringLiteral("/qmlimages/AirframeComponentIcon.png"); }
     bool requiresSetup() const final { return _requiresFrameSetup; }
     bool setupComplete() const final;
@@ -32,7 +32,7 @@ public:
 
 private:
     bool _requiresFrameSetup = false; ///< true: FRAME parameter must be set
-    const QString _name = tr("Frame");
+    const QString _name = tr("机架");
     Fact *_frameClassFact = nullptr;
 
     static constexpr const char *_frameClassParam = "FRAME_CLASS";

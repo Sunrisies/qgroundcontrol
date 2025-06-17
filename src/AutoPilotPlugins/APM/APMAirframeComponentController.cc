@@ -142,7 +142,7 @@ void APMAirframeComponentController::_githubJsonDownloadComplete(const QString& 
             downloader->deleteLater();
         }
     } else {
-        qgcApp()->showAppMessage(tr("Param file github json download failed: %1").arg(errorMsg));
+        qgcApp()->showAppMessage(tr("从github下载json参数文件失败: %1").arg(errorMsg));
         QGuiApplication::restoreOverrideCursor();
     }
 }
@@ -152,7 +152,7 @@ void APMAirframeComponentController::_paramFileDownloadComplete(const QString& /
     if (errorMsg.isEmpty()) {
         _loadParametersFromDownloadFile(localFile);
     } else {
-        qgcApp()->showAppMessage(tr("Param file download failed: %1").arg(errorMsg));
+        qgcApp()->showAppMessage(tr("参数文件下载失败: %1").arg(errorMsg));
         QGuiApplication::restoreOverrideCursor();
     }
 }

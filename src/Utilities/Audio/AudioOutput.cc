@@ -81,6 +81,7 @@ void AudioOutput::init(Fact *mutedFact)
 
     (void) connect(_engine, &QTextToSpeech::engineChanged, this, [this](const QString &engine) {
         qCDebug(AudioOutputLog) << "TTS Engine set to:" << engine;
+        // 打印
         const QLocale defaultLocale = QLocale("en_US");
         if (_engine->availableLocales().contains(defaultLocale)) {
             _engine->setLocale(defaultLocale);

@@ -134,11 +134,11 @@ ApplicationWindow {
     }
 
     function showAnalyzeTool() {
-        showTool(qsTr("Analyze Tools"), "qrc:/qml/QGroundControl/AnalyzeView/AnalyzeView.qml", "/qmlimages/Analyze.svg")
+        showTool(qsTr("分析工具"), "qrc:/qml/QGroundControl/AnalyzeView/AnalyzeView.qml", "/qmlimages/Analyze.svg")
     }
 
     function showVehicleConfig() {
-        showTool(qsTr("Vehicle Configuration"), "qrc:/qml/QGroundControl/VehicleSetup/SetupView.qml", "/qmlimages/Gears.svg")
+        showTool(qsTr("车辆配置"), "qrc:/qml/QGroundControl/VehicleSetup/SetupView.qml", "/qmlimages/Gears.svg")
     }
 
     function showVehicleConfigParametersPage() {
@@ -155,7 +155,7 @@ ApplicationWindow {
     }
 
     function showSettingsTool(settingsPage = "") {
-        showTool(qsTr("Application Settings"), "qrc:/qml/QGroundControl/Controls/AppSettings.qml", "/res/QGCLogoWhite")
+        showTool(qsTr("应用程序设置"), "qrc:/qml/QGroundControl/Controls/AppSettings.qml", "/res/QGCLogoWhite")
         if (settingsPage !== "") {
             toolDrawerLoader.item.showSettingsPage(settingsPage)
         }
@@ -212,12 +212,12 @@ ApplicationWindow {
         return true
     }
 
-    property string closeDialogTitle: qsTr("Close %1").arg(QGroundControl.appName)
+    property string closeDialogTitle: qsTr("关 %1").arg(QGroundControl.appName)
 
     function checkForUnsavedMission() {
         if (planView._planMasterController.dirty) {
             showMessageDialog(closeDialogTitle,
-                              qsTr("You have a mission edit in progress which has not been saved/sent. If you close you will lose changes. Are you sure you want to close?"),
+                              qsTr("您正在进行任务编辑，但尚未保存/发送。如果关闭，您将丢失更改。您确定要关闭吗？"),
                               Dialog.Yes | Dialog.No,
                               function() { _closeChecksToSkip |= _skipUnsavedMissionCheckMask; performCloseChecks() })
             return false
@@ -230,7 +230,7 @@ ApplicationWindow {
         for (var index=0; index<QGroundControl.multiVehicleManager.vehicles.count; index++) {
             if (QGroundControl.multiVehicleManager.vehicles.get(index).parameterManager.pendingWrites) {
                 mainWindow.showMessageDialog(closeDialogTitle,
-                    qsTr("You have pending parameter updates to a vehicle. If you close you will lose changes. Are you sure you want to close?"),
+                    qsTr("您有车辆的待定参数更新。如果关闭，您将丢失更改。您确定要关闭吗？"),
                     Dialog.Yes | Dialog.No,
                     function() { _closeChecksToSkip |= _skipPendingParameterWritesCheckMask; performCloseChecks() })
                 return false
@@ -242,7 +242,7 @@ ApplicationWindow {
     function checkForActiveConnections() {
         if (QGroundControl.multiVehicleManager.activeVehicle) {
             mainWindow.showMessageDialog(closeDialogTitle,
-                qsTr("There are still active connections to vehicles. Are you sure you want to exit?"),
+                qsTr("与车辆的连接仍处于活动状态。您确定要退出吗？"),
                 Dialog.Yes | Dialog.No,
                 function() { _closeChecksToSkip |= _skipActiveConnectionsCheckMask; performCloseChecks() })
             return false
@@ -281,14 +281,14 @@ ApplicationWindow {
 
     MessageDialog {
         id:                 showTouchAreasNotification
-        title:              qsTr("Debug Touch Areas")
-        text:               qsTr("Touch Area display toggled")
+        title:              qsTr("调试触摸区域")
+        text:               qsTr("触摸区域显示已切换")
         buttons:            MessageDialog.Ok
     }
 
     MessageDialog {
         id:                 advancedModeOnConfirmation
-        title:              qsTr("Advanced Mode")
+        title:              qsTr("高级模式")
         text:               QGroundControl.corePlugin.showAdvancedUIMessage
         buttons:            MessageDialog.Yes | MessageDialog.No
         onButtonClicked: function (button, role) {
@@ -300,8 +300,8 @@ ApplicationWindow {
 
     MessageDialog {
         id:                 advancedModeOffConfirmation
-        title:              qsTr("Advanced Mode")
-        text:               qsTr("Turn off Advanced Mode?")
+        title:              qsTr("高级模式")
+        text:               qsTr("关闭高级模式？")
         buttons:            MessageDialog.Yes | MessageDialog.No
         onButtonClicked: function (button, role) {
             if (button === MessageDialog.Yes) {
@@ -339,7 +339,7 @@ ApplicationWindow {
                         SubMenuButton {
                             height:             toolSelectDialog._toolButtonHeight
                             Layout.fillWidth:   true
-                            text:               qsTr("Plan Flight")
+                            text:               qsTr("计划飞行")
                             imageResource:      "/qmlimages/Plan.svg"
                             onClicked: {
                                 if (mainWindow.allowViewSwitch()) {
@@ -353,7 +353,7 @@ ApplicationWindow {
                             id:                 analyzeButton
                             height:             toolSelectDialog._toolButtonHeight
                             Layout.fillWidth:   true
-                            text:               qsTr("Analyze Tools")
+                            text:               qsTr("分析工具")
                             imageResource:      "/qmlimages/Analyze.svg"
                             visible:            QGroundControl.corePlugin.showAdvancedUI
                             onClicked: {
@@ -368,7 +368,7 @@ ApplicationWindow {
                             id:                 setupButton
                             height:             toolSelectDialog._toolButtonHeight
                             Layout.fillWidth:   true
-                            text:               qsTr("Vehicle Configuration")
+                            text:               qsTr("车辆配置")
                             imageResource:      "/qmlimages/Gears.svg"
                             onClicked: {
                                 if (mainWindow.allowViewSwitch()) {
@@ -382,7 +382,7 @@ ApplicationWindow {
                             id:                 settingsButton
                             height:             toolSelectDialog._toolButtonHeight
                             Layout.fillWidth:   true
-                            text:               qsTr("Application Settings")
+                            text:               qsTr("车辆配置")
                             imageResource:      "/res/QGCLogoFull.svg"
                             imageColor:         "transparent"
                             visible:            !QGroundControl.corePlugin.options.combineSettingsAndSetup
@@ -398,7 +398,7 @@ ApplicationWindow {
                             id:                 closeButton
                             height:             toolSelectDialog._toolButtonHeight
                             Layout.fillWidth:   true
-                            text:               qsTr("Close %1").arg(QGroundControl.appName)
+                            text:               qsTr("关 %1").arg(QGroundControl.appName)
                             imageResource:      "/res/cancel.svg"
                             visible:            mainWindow.visibility === Window.FullScreen
                             onClicked: {
@@ -415,7 +415,7 @@ ApplicationWindow {
 
                             QGCLabel {
                                 id:                     versionLabel
-                                text:                   qsTr("%1 Version").arg(QGroundControl.appName)
+                                text:                   qsTr("%1 版本").arg(QGroundControl.appName)
                                 font.pointSize:         ScreenTools.smallFontPointSize
                                 wrapMode:               QGCLabel.WordWrap
                                 Layout.maximumWidth:    parent.width
@@ -502,7 +502,7 @@ ApplicationWindow {
 
                 QGCLabel {
                     id:             toolbarDrawerText
-                    text:           qsTr("Exit") + " " + toolDrawer.toolTitle
+                    text:           qsTr("编辑") + " " + toolDrawer.toolTitle
                     font.pointSize: ScreenTools.largeFontPointSize
                 }
             }
@@ -583,7 +583,7 @@ ApplicationWindow {
                 QGCLabel {
                     id:                 vehicleWarningLabel
                     anchors.centerIn:   parent
-                    text:               qsTr("Vehicle Error")
+                    text:               qsTr("车辆错误")
                     font.pointSize:     ScreenTools.smallFontPointSize
                     color:              qgcPal.alertText
                 }
@@ -607,7 +607,7 @@ ApplicationWindow {
                 QGCLabel {
                     id:                 additionalErrorsLabel
                     anchors.centerIn:   parent
-                    text:               qsTr("Additional errors received")
+                    text:               qsTr("收到其他错误")
                     font.pointSize:     ScreenTools.smallFontPointSize
                     color:              qgcPal.alertText
                 }
@@ -733,7 +733,7 @@ ApplicationWindow {
 
                 Binding {
                     target:     indicatorDrawerLoader.item
-                    property:   "expanded"
+                    property:   "扩大"
                     value:      indicatorDrawer._expanded
                 }
 

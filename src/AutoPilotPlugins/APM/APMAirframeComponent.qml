@@ -68,11 +68,11 @@ SetupPage {
                 id:                 helpText
                 Layout.fillWidth:   true
                 text:               (_frameClass.rawValue === 0 ?
-                                         qsTr("Airframe is currently not set.") :
-                                         qsTr("Currently set to frame class '%1'").arg(_frameClass.enumStringValue) +
-                                         (_frameTypeAvailable ?  qsTr(" and frame type '%2'").arg(_frameType.enumStringValue) : "") +
+                                         qsTr("当前没有设置机体类型.") :
+                                         qsTr("当前设置为框架类 '%1'").arg(_frameClass.enumStringValue) +
+                                         (_frameTypeAvailable ?  qsTr(" 和帧类型 '%2'").arg(_frameType.enumStringValue) : "") +
                                          qsTr(".", "period for end of sentence")) +
-                                    qsTr(" To change this configuration, select the desired frame class below and then reboot the vehicle.")
+                                    qsTr(" 要更改此配置，请在下面选择所需的框架类别，然后重新启动车辆.")
                 font.bold:          true
                 wrapMode:           Text.WordWrap
             }
@@ -163,7 +163,7 @@ SetupPage {
                                 }
 
                                 QGCLabel {
-                                    text:           qsTr("Frame Type")
+                                    text:           qsTr("机架类型")
                                     font.pointSize: ScreenTools.smallFontPointSize
                                     color:          qgcPal.buttonHighlightText
                                     visible:        airframeCheckBox.checked && object.frameTypeSupported
@@ -206,7 +206,7 @@ SetupPage {
 
                         QGCLabel {
                             anchors.fill:   imageComboRect
-                            text:           qsTr("Invalid setting for FRAME_TYPE. Click to Reset.")
+                            text:           qsTr("FRAME_TYPE 参数设置无效。点击重置.")
                             wrapMode:       Text.WordWrap
                             visible:        !combo.valid
                         }
